@@ -9,16 +9,28 @@ public class Jumper : MoveController {
     void Update()
     {
         myrigidbody.velocity = new Vector2(speed, myrigidbody.velocity.y);
-        if (Input.GetKeyDown("space") && !jumping)
+        if (Input.GetKeyDown("space"))
         {
             Action();
         }
+
+        if (Input.GetKeyDown("w"))
+        {
+            base.changeCharacter(ToSwitch);
+            Destroy(gameObject);
+        }
+
     }
 
     public override void Action()
     {
-        myrigidbody.velocity += new Vector2(0, jumpPower);
-        jumping = true;
+        // TODO: get rid of hardcoded -7.9 
+        if (!(transform.position.y > -7.9f))
+        {
+            myrigidbody.velocity += new Vector2(0, jumpPower);
+            jumping = true;
+        }
+        
     }
 
     void OnCollisionEnter2D(Collision2D other)
