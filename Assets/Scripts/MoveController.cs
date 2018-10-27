@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour {
     public float speed;
-    protected Rigidbody2D myrigidbody;
+    public Rigidbody2D myrigidbody;
 
     public GameObject ToSwitch;
 
 	// Use this for initialization
-	void Start () {
+	public virtual void Start () {
         myrigidbody = GetComponent<Rigidbody2D>();
         myrigidbody.velocity = new Vector2(speed, 0);
 	}

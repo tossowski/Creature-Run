@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class Bird : MoveController {
     public float jumpPower;
+    private bool jumping;
+
+
+    public override void Start()
+    {
+        base.Start();
+        jumping = true;
+    }
 
     void Update()
     {
         
         myrigidbody.velocity = new Vector2(speed, myrigidbody.velocity.y);
+        myrigidbody.gravityScale = 4f;
         if (Input.GetKeyDown("space"))
         {
             Action();
@@ -16,9 +25,8 @@ public class Bird : MoveController {
 
         if (!(myrigidbody.velocity.y >= 0))
         {
-            myrigidbody.velocity = new Vector2(speed, -1f);
+            myrigidbody.velocity = new Vector2(speed, -0.1f);
         }
-        Debug.Log(myrigidbody.gravityScale);
 
         if (Input.GetKeyDown("w"))
         {
@@ -30,11 +38,20 @@ public class Bird : MoveController {
 
     public override void Action()
     {
-        if (!(transform.position.y > -7.9f))
+        if (!jumping)
         {
+            jumping = true;
             myrigidbody.velocity += new Vector2(0, jumpPower);
         }
 
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            jumping = false;
+        }
     }
 
 }

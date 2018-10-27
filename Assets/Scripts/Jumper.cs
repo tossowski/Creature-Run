@@ -6,6 +6,12 @@ public class Jumper : MoveController {
     public float jumpPower;
     private bool jumping;
 
+    public override void Start()
+    {
+        base.Start();
+        jumping = true;
+    }
+
     void Update()
     {
         myrigidbody.velocity = new Vector2(speed, myrigidbody.velocity.y);
@@ -25,7 +31,7 @@ public class Jumper : MoveController {
     public override void Action()
     {
         // TODO: get rid of hardcoded -7.9 
-        if (!(transform.position.y > -7.9f))
+        if (!jumping)
         {
             myrigidbody.velocity += new Vector2(0, jumpPower);
             jumping = true;
@@ -33,8 +39,11 @@ public class Jumper : MoveController {
         
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    public void OnCollisionEnter2D(Collision2D other)
     {
-        jumping = false;
+        if (other.gameObject.tag == "Ground")
+        {
+            jumping = false;
+        }
     }
 }
