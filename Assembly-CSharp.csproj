@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\BackgroundGenerator.cs" />
      <Compile Include="Assets\Scripts\Bird.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Dasher.cs" />
      <Compile Include="Assets\Scripts\FollowPlayer.cs" />
      <Compile Include="Assets\Scripts\Jumper.cs" />
      <Compile Include="Assets\Scripts\MoveController.cs" />

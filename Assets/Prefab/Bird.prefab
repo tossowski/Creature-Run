@@ -109,7 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  ToSwitch: {fileID: 1860467612126858, guid: 203982dc00e5dc842962e890423e0852, type: 2}
+  myrigidbody: {fileID: 0}
+  ToSwitch: {fileID: 1680956342477822, guid: fc0a535e5f673d54484d004af888dd20, type: 2}
   jumpPower: 30
 --- !u!212 &212981491292733512
 SpriteRenderer:
