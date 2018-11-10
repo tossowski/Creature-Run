@@ -12,8 +12,12 @@ public class BackgroundGenerator : MonoBehaviour {
 
     public GameObject groundTile;
 
+    private Vector3 start;
+
 	// Use this for initialization
 	void Start () {
+
+        start = groundTile.transform.position;
 
         backgroundWidths = new float[backgrounds.Length];
 		for (int i = 0; i < backgrounds.Length; i++)
@@ -26,10 +30,6 @@ public class BackgroundGenerator : MonoBehaviour {
             Instantiate(backgrounds[0], Vector3.zero + i * new Vector3(backgroundWidths[0], 0, 0), Quaternion.identity);
         }
 
-        for (int i = 0; i < 1000; i++)
-        {
-            Instantiate(groundTile, Vector3.zero + new Vector3(i * 2.56f, -10, 0), Quaternion.identity);
-        }
 	}
 	
 	// Update is called once per frame
